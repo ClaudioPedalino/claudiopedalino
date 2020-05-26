@@ -21,6 +21,8 @@ namespace TotvsChallenge.Core.Requests.CalculateChange
 
         public async Task<ChangeModelResponse> Handle(CalculateChangeRequest request, CancellationToken cancellationToken)
         {
+            //TODO: Validate client exists
+
             //Validate Debit or Credit ExactlyPayment
             if (PayBackWithCardError(request))
                 throw new Exception("Si se pagó con tarjeta no debería haber vuelto");

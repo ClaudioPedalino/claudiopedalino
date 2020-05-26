@@ -9,9 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TotvsChallenge.Core", "..\T
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TotvsChallenge.Data", "..\TotvsChallenge.Data\TotvsChallenge.Data.csproj", "{F4B891AE-AED1-4250-AAE5-387BE28D188F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TotvsChallenge.Entities", "..\TotvsChallenge.Entities\TotvsChallenge.Entities.csproj", "{18A5418E-65C5-42B4-8537-8407A20F066C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TotvsChallenge.Entities", "..\TotvsChallenge.Entities\TotvsChallenge.Entities.csproj", "{18A5418E-65C5-42B4-8537-8407A20F066C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TotvsChallenge.DataAccess.EF", "..\TotvsChallenge.DataAccess.EF\TotvsChallenge.DataAccess.EF.csproj", "{AC4B1AA8-8AAB-45C7-BF7A-4E0BFA09B00E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TotvsChallenge.DataAccess", "..\TotvsChallenge.DataAccess.EF\TotvsChallenge.DataAccess.csproj", "{AC4B1AA8-8AAB-45C7-BF7A-4E0BFA09B00E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

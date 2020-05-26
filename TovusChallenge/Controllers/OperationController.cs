@@ -8,13 +8,13 @@ using TotvsChallenge.Core.Requests.CalculateChange;
 
 namespace TovusChallenge.Api.Controllers
 {
-    [Route("v1/transaction")]
+    [Route("v1/operation")]
     [ApiController]
-    public class ChangeController : ControllerBase
+    public class OperationController : ControllerBase
     {
         private readonly IMediator mediator;
 
-        public ChangeController(IMediator mediator)
+        public OperationController(IMediator mediator)
         {
             this.mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         }
