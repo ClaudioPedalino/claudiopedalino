@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace TotvsChallenge.DataAccess.EF.Migrations
+namespace TotvsChallenge.DataAccess.Migrations
 {
     public partial class Initial : Migration
     {

@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using TotvsChallenge.DataAccess.EF;
+using TotvsChallenge.DataAccess;
 
-namespace TotvsChallenge.DataAccess.EF.Migrations
+namespace TotvsChallenge.DataAccess.Migrations
 {
     [DbContext(typeof(DataContext))]
     [Migration("20200526054120_Initial")]

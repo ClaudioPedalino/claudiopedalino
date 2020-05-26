@@ -14,8 +14,6 @@ using System.Globalization;
 using System.Reflection;
 using TotvsChallenge.Data.Contracts;
 using TotvsChallenge.DataAccess;
-using TotvsChallenge.DataAccess.EF;
-using TotvsChallenge.DataAccess.EF.Repositories;
 using TotvsChallenge.DataAccess.Repositories;
 
 namespace TovusChallenge

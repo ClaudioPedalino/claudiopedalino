@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using TotvsChallenge.Entities;
 
-namespace TotvsChallenge.DataAccess.EF
+namespace TotvsChallenge.DataAccess
 {
     public class DataContext : DbContext
     {

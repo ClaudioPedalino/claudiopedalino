@@ -11,17 +11,17 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-nanoserver-1903 AS build
 WORKDIR /src
 COPY ["TovusChallenge.Api.csproj", ""]
-COPY ["../TotvsChallenge.DataAccess.EF/TotvsChallenge.DataAccess.csproj", "../TotvsChallenge.DataAccess.EF/"]
+COPY ["../TotvsChallenge.DataAccess/TotvsChallenge.DataAccess.csproj", "../TotvsChallenge.DataAccess/"]
 COPY ["../TotvsChallenge.Data/TotvsChallenge.Data.csproj", "../TotvsChallenge.Data/"]
 COPY ["../TotvsChallenge.Entities/TotvsChallenge.Entities.csproj", "../TotvsChallenge.Entities/"]
 COPY ["../TotvsChallenge.Core/TotvsChallenge.Core.csproj", "../TotvsChallenge.Core/"]
 RUN dotnet restore "./TovusChallenge.Api.csproj"
 COPY . .
 WORKDIR "/src/."
-RUN dotnet build "TovusChallenge.Api.csproj" -c Release -o /app
+RUN dotnet build "TovusChallenge.Api.csproj" -c Release -o ./app
 
 FROM build AS publish
-RUN dotnet publish "TovusChallenge.Api.csproj" -c Release -o /app
+RUN dotnet publish "TovusChallenge.Api.csproj" -c Release -o ./app
 
 FROM base AS final
 WORKDIR /app

@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using TotvsChallenge.DataAccess.EF;
+using TotvsChallenge.DataAccess;
 
-namespace TotvsChallenge.DataAccess.EF.Migrations
+namespace TotvsChallenge.DataAccess.Migrations
 {
     [DbContext(typeof(DataContext))]
     partial class DataContextModelSnapshot : ModelSnapshot

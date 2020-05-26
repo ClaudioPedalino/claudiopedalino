@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using TotvsChallenge.Data.Contracts;
 using TotvsChallenge.Entities;
 
-namespace TotvsChallenge.DataAccess.EF.Repositories
+namespace TotvsChallenge.DataAccess.Repositories
 {
     public class OperationRepository : IOperationRepository
     {
