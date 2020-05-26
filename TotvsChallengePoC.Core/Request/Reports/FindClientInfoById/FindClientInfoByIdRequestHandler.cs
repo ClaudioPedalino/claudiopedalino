@@ -1,5 +1,6 @@
 ﻿using EasyCaching.Core;
 using MediatR;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using Serilog;
 using System;
@@ -17,20 +18,30 @@ namespace TotvsChallengePoC.Core.Request.Reports.FindClientInfoById
         private readonly IEasyCachingProviderFactory cachingProviderFactory;
         private readonly ILogger logService;
 
-        public FindClientInfoByIdRequestHandler(IReportRepository reportRepository, IEasyCachingProviderFactory cachingProviderFactory, ILogger logService)
+        public FindClientInfoByIdRequestHandler(IReportRepository reportRepository, IEasyCachingProviderFactory cachingProviderFactory, ILogger logService, IConfiguration _config)
         {
             this.reportRepository = reportRepository ?? throw new System.ArgumentNullException(nameof(reportRepository));
             this.cachingProviderFactory = cachingProviderFactory ?? throw new ArgumentNullException(nameof(cachingProviderFactory));
             this.logService = logService ?? throw new ArgumentNullException(nameof(logService));
-            this.cachingProvider = this.cachingProviderFactory.GetCachingProvider("localRedis"); //TODO:Move to config
+            this.cachingProvider = this.cachingProviderFactory.GetCachingProvider(_config["Redis:Name"]);
         }
 
 
         public async Task<ClientInfoModelResponse> Handle(FindClientInfoByIdRequest request, CancellationToken cancellationToken)
         {
-            var result = await reportRepository.FindClientInfoById(request.ClientId);
-            await SetIntoRedis(request, result);
-            return result;
+            ClientInfoModelResponse result = new ClientInfoModelResponse();
+            try
+            {
+                result = await reportRepository.FindClientInfoById(request.ClientId);
+                await SetIntoRedis(request, result);
+                return result;
+
+            }
+            catch (Exception ex)
+            {
+                logService.Error(ex, $"Client failed querying database with parameters: {request.ClientId}" );
+                throw;
+            }
         }
 
         #region Redis

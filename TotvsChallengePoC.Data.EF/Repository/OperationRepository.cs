@@ -13,9 +13,6 @@ namespace TotvsChallengePoC.Data.EF.Repository
             => this.dataContext = dataContext
                 ?? throw new ArgumentNullException(nameof(dataContext));
 
-        //public async Task<Operation> FindByIdAsync(Guid id)
-        //    => await dataContext.Operations.FindAsync(id);
-
         public async Task Add(Operation operation)
         {
             await dataContext.AddAsync(operation);

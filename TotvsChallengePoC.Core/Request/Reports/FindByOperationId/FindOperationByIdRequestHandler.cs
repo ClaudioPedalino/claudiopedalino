@@ -1,5 +1,6 @@
 ﻿using EasyCaching.Core;
 using MediatR;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using Serilog;
 using System;
@@ -17,20 +18,28 @@ namespace TotvsChallengePoC.Core.Request.Reports.FindByOperationId
         private readonly IEasyCachingProviderFactory cachingProviderFactory;
         private readonly ILogger logService;
 
-
-        public FindOperationByIdRequestHandler(IReportRepository reportRepository, IEasyCachingProviderFactory cachingProviderFactory, ILogger logService)
+        public FindOperationByIdRequestHandler(IReportRepository reportRepository, IEasyCachingProviderFactory cachingProviderFactory, ILogger logService, IConfiguration _config)
         {
             this.reportRepository = reportRepository ?? throw new System.ArgumentNullException(nameof(reportRepository));
             this.cachingProviderFactory = cachingProviderFactory ?? throw new ArgumentNullException(nameof(cachingProviderFactory));
             this.logService = logService ?? throw new ArgumentNullException(nameof(logService));
-            this.cachingProvider = this.cachingProviderFactory.GetCachingProvider("localRedis");
+            this.cachingProvider = this.cachingProviderFactory.GetCachingProvider(_config["Redis:Name"]);
         }
 
         public async Task<OperationInfoModelResponse> Handle(FindOperationByIdRequest request, CancellationToken cancellationToken)
         {
-            var result = await reportRepository.FindOperationInfoById(request.OperationId);
-            await SetIntoRedis(request, result);
-            return result;
+            OperationInfoModelResponse result = new OperationInfoModelResponse();
+            try
+            {
+                result = await reportRepository.FindOperationInfoById(request.OperationId);
+                await SetIntoRedis(request, result);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                logService.Error(ex, $"Operation Id failed querying database with parameters: {request.OperationId}");
+                throw;
+            }
         }
 
         private async Task SetIntoRedis(FindOperationByIdRequest request, OperationInfoModelResponse result)

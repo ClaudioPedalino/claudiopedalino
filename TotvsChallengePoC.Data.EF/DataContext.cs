@@ -11,8 +11,5 @@ namespace TotvsChallengePoC.Data.EF
         public DbSet<Client> Clients { get; set; }
         public DbSet<PaymentType> PaymentTypes { get; set; }
         public DbSet<Change> Change { get; set; }
-        //public DbSet<Product> Products { get; set; }
-        //public DbSet<Bill> Bills { get; set; }
-        //public DbSet<Coin> Coins { get; set; }
     }
 }

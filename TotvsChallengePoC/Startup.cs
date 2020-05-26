@@ -34,19 +34,10 @@ namespace TotvsChallengePoC
             services.AddDbContext<DataContext>(options => options
                 .UseSqlServer(Configuration.GetConnectionString("Sql")));
 
-
             services.AddMvc()
                 .AddNewtonsoftJson()
                 .AddFluentValidation(opt => opt.RegisterValidatorsFromAssembly(Assembly.Load("TotvsChallengePoC.Core")));
             FluentValidation.ValidatorOptions.LanguageManager.Culture = new CultureInfo("es");
-            #region if need to register validators from somewhere else..
-            //services.AddMvc().AddFluentValidation();
-            //services.AddTransient<IValidator<BuyRequest>, BuyRequestValidator>();
-            //services.AddTransient<IValidator<FindOperationByIdRequest>, FindOperationByIdRequestValidator>();
-            //services.AddTransient<IValidator<FindClientInfoByIdRequest>, FindClientInfoByIdRequestValidator>();
-            #endregion
-
-
 
             services.AddTransient<IOperationRepository, OperationRepository>();
             services.AddTransient<IClientRepository, ClientRepository>();
@@ -54,7 +45,6 @@ namespace TotvsChallengePoC
             services.AddScoped<IBaseRepository, BaseRepository>();
             services.AddScoped<IReportRepository, ReportRepository>();
 
-            //services.AddMediatR(typeof(Startup));
             var assembly = AppDomain.CurrentDomain.Load("TotvsChallengePoC.Core");
             services.AddMediatR(assembly);
 
@@ -67,8 +57,6 @@ namespace TotvsChallengePoC
                 autoCreateSqlTable: true).CreateLogger();
             });
 
-            //services.AddSingleton<ILoggerFactory, LoggerFactory>();
-            //services.AddSingleton(typeof(ILogger<>), typeof(Logger<>));
 
             services.AddControllers();
 
@@ -76,10 +64,12 @@ namespace TotvsChallengePoC
             {
                 opt.UseRedis(redisConfig =>
                 {
-                    redisConfig.DBConfig.Endpoints.Add(new ServerEndPoint("localhost", 6379));
+                    redisConfig.DBConfig.Endpoints
+                        .Add(new ServerEndPoint(Configuration["Redis:Host"],
+                        Convert.ToInt32(Configuration["Redis:Port"])));
                     redisConfig.DBConfig.AllowAdmin = true;
                 }
-                , "localRedis");
+                , Configuration["Redis:Name"]);
             });
 
             services.AddSwaggerGen(c =>

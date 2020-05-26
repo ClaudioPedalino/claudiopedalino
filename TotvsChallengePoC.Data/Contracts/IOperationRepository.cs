@@ -5,7 +5,11 @@ namespace TotvsChallengePoC.Data.Repositories
 {
     public interface IOperationRepository
     {
-        //Task<Operation> FindByIdAsync(Guid id);
+        /// <summary>
+        /// Create a new Operation entry in database and the data associate
+        /// </summary>
+        /// <param name="Operation"></param>
+        /// <returns></returns>
         Task Add(Operation Operation);
     }
 }

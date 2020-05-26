@@ -1,0 +1,671 @@
+{
+	"info": {
+		"_postman_id": "649a9c5d-472f-4b13-85af-9a365b23c512",
+		"name": "TotvsChallenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "FillSomeData_Checked",
+			"item": [
+				{
+					"name": "LoadData01",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"products\": [\r\n    {\r\n      \"id\": 1,\r\n      \"amount\": 133.22\r\n    },\r\n    {\r\n      \"id\": 2,\r\n      \"amount\": 23.22\r\n    }\r\n  ],\r\n  \"clientId\": \"3FA85F64-5717-4562-B3FC-2C963F66AFA1\",\r\n  \"paymentType\": 1,\r\n  \"clientPaymentAmount\": 763.24\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/v1/operation/buy",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"v1",
+								"operation",
+								"buy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LoadData02",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"products\": [\r\n    {\r\n      \"id\": 3,\r\n      \"amount\": 54.07\r\n    }\r\n  ],\r\n  \"clientId\": \"3FA85F64-5717-4562-B3FC-2C963F66AFA1\",\r\n  \"paymentType\": 1,\r\n  \"clientPaymentAmount\": 163.24\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/v1/operation/buy",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"v1",
+								"operation",
+								"buy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LoadData03",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"products\": [\r\n    {\r\n      \"id\": 4,\r\n      \"amount\": 13.09\r\n    }\r\n  ],\r\n  \"clientId\": \"3FA85F64-5717-4562-B3FC-2C963F66AFA1\",\r\n  \"paymentType\": 1,\r\n  \"clientPaymentAmount\": 20\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/v1/operation/buy",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"v1",
+								"operation",
+								"buy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LoadData04",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"products\": [\r\n    {\r\n      \"id\": 2,\r\n      \"amount\": 13.09\r\n    }\r\n  ],\r\n  \"clientId\": \"3FA85F64-5717-4562-B3FC-2C963F66AFA1\",\r\n  \"paymentType\": 1,\r\n  \"clientPaymentAmount\": 40\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/v1/operation/buy",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"v1",
+								"operation",
+								"buy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LoadData05",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"products\": [\r\n    {\r\n      \"id\": 1,\r\n      \"amount\": 33.09\r\n    }\r\n  ],\r\n  \"clientId\": \"3FA85F64-5717-4562-B3FC-2C963F66AFA1\",\r\n  \"paymentType\": 1,\r\n  \"clientPaymentAmount\": 763.24\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/v1/operation/buy",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"v1",
+								"operation",
+								"buy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LoadData06",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"products\": [\r\n    {\r\n      \"id\": 2,\r\n      \"amount\": 33.09\r\n    },\r\n    {\r\n      \"id\": 3,\r\n      \"amount\": 33.09\r\n    }\r\n  ],\r\n  \"clientId\": \"3FA85F64-5717-4562-B3FC-2C963F66AFA2\",\r\n  \"paymentType\": 1,\r\n  \"clientPaymentAmount\": 163.24\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/v1/operation/buy",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"v1",
+								"operation",
+								"buy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LoadData07",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"products\": [\r\n    {\r\n      \"id\": 4,\r\n      \"amount\": 313.09\r\n    }\r\n  ],\r\n  \"clientId\": \"3FA85F64-5717-4562-B3FC-2C963F66AFA2\",\r\n  \"paymentType\": 1,\r\n  \"clientPaymentAmount\": 800\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/v1/operation/buy",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"v1",
+								"operation",
+								"buy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LoadData08",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"products\": [\r\n    {\r\n      \"id\": 4,\r\n      \"amount\": 33.09\r\n    }\r\n  ],\r\n  \"clientId\": \"3FA85F64-5717-4562-B3FC-2C963F66AFA2\",\r\n  \"paymentType\": 1,\r\n  \"clientPaymentAmount\": 763.24\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/v1/operation/buy",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"v1",
+								"operation",
+								"buy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LoadData09",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"products\": [\r\n    {\r\n      \"id\": 2,\r\n      \"amount\": 333.09\r\n    }\r\n  ],\r\n  \"clientId\": \"3FA85F64-5717-4562-B3FC-2C963F66AFA2\",\r\n  \"paymentType\": 1,\r\n  \"clientPaymentAmount\": 763.24\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/v1/operation/buy",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"v1",
+								"operation",
+								"buy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LoadData10",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"products\": [\r\n    {\r\n      \"id\": 4,\r\n      \"amount\": 31.14\r\n    }\r\n  ],\r\n  \"clientId\": \"3FA85F64-5717-4562-B3FC-2C963F66AFA2\",\r\n  \"paymentType\": 1,\r\n  \"clientPaymentAmount\": 763.24\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/v1/operation/buy",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"v1",
+								"operation",
+								"buy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LoadData11",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"products\": [\r\n    {\r\n      \"id\": 1,\r\n      \"amount\": 33.09\r\n    }\r\n  ],\r\n  \"clientId\": \"3FA85F64-5717-4562-B3FC-2C963F66AFA3\",\r\n  \"paymentType\": 1,\r\n  \"clientPaymentAmount\": 763.24\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/v1/operation/buy",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"v1",
+								"operation",
+								"buy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LoadData12",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"products\": [\r\n    {\r\n      \"id\": 1,\r\n      \"amount\": 33.09\r\n    }\r\n  ],\r\n  \"clientId\": \"3FA85F64-5717-4562-B3FC-2C963F66AFA3\",\r\n  \"paymentType\": 1,\r\n  \"clientPaymentAmount\": 763.24\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/v1/operation/buy",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"v1",
+								"operation",
+								"buy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LoadData13",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"products\": [\r\n    {\r\n      \"id\": 3,\r\n      \"amount\": 33.09\r\n    }\r\n  ],\r\n  \"clientId\": \"3FA85F64-5717-4562-B3FC-2C963F66AFA3\",\r\n  \"paymentType\": 1,\r\n  \"clientPaymentAmount\": 763.24\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/v1/operation/buy",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"v1",
+								"operation",
+								"buy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LoadData14",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"products\": [\r\n    {\r\n      \"id\": 1,\r\n      \"amount\": 33.09\r\n    }\r\n  ],\r\n  \"clientId\": \"3FA85F64-5717-4562-B3FC-2C963F66AFA4\",\r\n  \"paymentType\": 1,\r\n  \"clientPaymentAmount\": 763.24\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/v1/operation/buy",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"v1",
+								"operation",
+								"buy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LoadData15",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"products\": [\r\n    {\r\n      \"id\": 2,\r\n      \"amount\": 33.09\r\n    }\r\n  ],\r\n  \"clientId\": \"3FA85F64-5717-4562-B3FC-2C963F66AFA4\",\r\n  \"paymentType\": 1,\r\n  \"clientPaymentAmount\": 763.24\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/v1/operation/buy",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"v1",
+								"operation",
+								"buy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LoadData16",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"products\": [\r\n    {\r\n      \"id\": 1,\r\n      \"amount\": 33.09\r\n    }\r\n  ],\r\n  \"clientId\": \"3FA85F64-5717-4562-B3FC-2C963F66AFA5\",\r\n  \"paymentType\": 1,\r\n  \"clientPaymentAmount\": 763.24\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/v1/operation/buy",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"v1",
+								"operation",
+								"buy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LoadData17",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"products\": [\r\n    {\r\n      \"id\": 2,\r\n      \"amount\": 13.09\r\n    }\r\n  ],\r\n  \"clientId\": \"3FA85F64-5717-4562-B3FC-2C963F66AFA5\",\r\n  \"paymentType\": 1,\r\n  \"clientPaymentAmount\": 163.24\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/v1/operation/buy",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"v1",
+								"operation",
+								"buy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LoadData18",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"products\": [\r\n    {\r\n      \"id\": 1,\r\n      \"amount\": 50\r\n    }\r\n  ],\r\n  \"clientId\": \"3FA85F64-5717-4562-B3FC-2C963F66AFA3\",\r\n  \"paymentType\": 2,\r\n  \"clientPaymentAmount\": 50\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/v1/operation/buy",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"v1",
+								"operation",
+								"buy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LoadData19",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"products\": [\r\n    {\r\n      \"id\": 3,\r\n      \"amount\": 50\r\n    }\r\n  ],\r\n  \"clientId\": \"3FA85F64-5717-4562-B3FC-2C963F66AFA4\",\r\n  \"paymentType\": 2,\r\n  \"clientPaymentAmount\": 50\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/v1/operation/buy",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"v1",
+								"operation",
+								"buy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LoadData20",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"products\": [\r\n    {\r\n      \"id\": 4,\r\n      \"amount\": 50\r\n    }\r\n  ],\r\n  \"clientId\": \"3FA85F64-5717-4562-B3FC-2C963F66AFA5\",\r\n  \"paymentType\": 3,\r\n  \"clientPaymentAmount\": 50\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/v1/operation/buy",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"v1",
+								"operation",
+								"buy"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "f9e7f16b-7f67-42b7-9655-e1d74ae52e62",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "3d20a8cf-7cd2-4551-931f-844e2d59f83c",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Errors/Validators",
+			"item": [],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "/transaction/buy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"products\": [\r\n    {\r\n      \"id\": 1,\r\n      \"amount\": 33.09\r\n    }\r\n  ],\r\n  \"clientId\": \"3FA85F64-5717-4562-B3FC-2C963F66AFA2\",\r\n  \"paymentType\": 1,\r\n  \"clientPaymentAmount\": 763.24\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/v1/operation/buy",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"v1",
+						"operation",
+						"buy"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/reports/operation/{:OperationId}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/v1/reports/operation/{{operationId}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"v1",
+						"reports",
+						"operation",
+						"{{operationId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/reports/client/{:ClientId}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/v1/reports/client/3FA85F64-5717-4562-B3FC-2C963F66AFA3",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"v1",
+						"reports",
+						"client",
+						"3FA85F64-5717-4562-B3FC-2C963F66AFA3"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

@@ -3,7 +3,6 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using TotvsChallengePoC.Core.Request;
 using TotvsChallengePoC.Core.Request.Buy;
 using TotvsChallengePoC.Core.Request.Buy.Model;
 using TotvsChallengePoC.Data.Contracts;
@@ -29,16 +28,16 @@ namespace TotvsChallenge.Tests
 
         }
 
-        [Test]
-        public async Task holi()
-        {
-            BuyRequestHandler service = new BuyRequestHandler(this.operationRepository.Object, this.clientRepository.Object);
-            var response = await service.Handle(request, cancellation);
+        //[Test]
+        //public async Task holi()
+        //{
+        //    BuyRequestHandler service = new BuyRequestHandler(this.operationRepository.Object, this.clientRepository.Object);
+        //    var response = await service.Handle(request, cancellation);
 
-            var model = new ChangeModelResponse();
+        //    var model = new ChangeModelResponse();
 
-            Assert.Equals(response, model);
-        }
+        //    Assert.Equals(response, model);
+        //}
 
     }
 }
