@@ -1,3 +1,4 @@
+using EasyCaching.Core.Configurations;
 using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
@@ -7,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Serilog;
 using System;
 using System.Globalization;
 using System.Reflection;
@@ -38,7 +40,7 @@ namespace TovusChallenge
             FluentValidation.ValidatorOptions.LanguageManager.Culture = new CultureInfo("es");
             #region if need to register validators from somewhere else..
             //services.AddMvc().AddFluentValidation();
-            //services.AddTransient<IValidator<CalculateChangeRequest>, CalculateChangeRequestValidator>();
+            //services.AddTransient<IValidator<BuyRequest>, BuyValidator>();
             //services.AddTransient<IValidator<FindOperationByIdRequest>, FindOperationByIdRequestValidator>();
             //services.AddTransient<IValidator<FindClientInfoByIdRequest>, FindClientInfoByIdRequestValidator>();
             #endregion
@@ -54,7 +56,29 @@ namespace TovusChallenge
             var assembly = AppDomain.CurrentDomain.Load("TotvsChallenge.Core");
             services.AddMediatR(assembly);
 
+            services.AddSingleton<Serilog.ILogger>(opt =>
+            {
+                var connStr = Configuration["ConnectionStrings:Sql"];
+                var tableName = Configuration["ConnectionStrings:LogTable"];
+                return new LoggerConfiguration().WriteTo.
+                MSSqlServer(connStr, tableName, restrictedToMinimumLevel: Serilog.Events.LogEventLevel.Warning,
+                autoCreateSqlTable: true).CreateLogger();
+            });
+
+            //services.AddSingleton<ILoggerFactory, LoggerFactory>();
+            //services.AddSingleton(typeof(ILogger<>), typeof(Logger<>));
+
             services.AddControllers();
+
+            services.AddEasyCaching(opt =>
+            {
+                opt.UseRedis(redisConfig =>
+                {
+                    redisConfig.DBConfig.Endpoints.Add(new ServerEndPoint("localhost", 6379));
+                    redisConfig.DBConfig.AllowAdmin = true;
+                }
+                , "localRedis");
+            });
 
             services.AddSwaggerGen(c =>
             {

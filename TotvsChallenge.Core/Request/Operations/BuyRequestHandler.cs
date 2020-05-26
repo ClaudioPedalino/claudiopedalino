@@ -1,25 +1,27 @@
 ﻿using MediatR;
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
+using TotvsChallenge.Core.Helpers;
+using TotvsChallenge.Core.Request.Operations;
 using TotvsChallenge.Data.Contracts;
 using TotvsChallenge.Data.Models;
 using TotvsChallenge.Entities;
 
-namespace TotvsChallenge.Core.Requests.CalculateChange
+namespace TotvsChallenge.Core.Request.Operations
 {
-    public class CalculateChangeRequestHandler : IRequestHandler<CalculateChangeRequest, ChangeModelResponse>
+    public class BuyRequestHandler : IRequestHandler<BuyRequest, ChangeModelResponse>
     {
         private readonly IOperationRepository operationRepository;
 
-        public CalculateChangeRequestHandler(IOperationRepository operationRepository)
+        public BuyRequestHandler(IOperationRepository operationRepository)
         {
             this.operationRepository = operationRepository ?? throw new ArgumentNullException(nameof(operationRepository));
         }
 
-        public async Task<ChangeModelResponse> Handle(CalculateChangeRequest request, CancellationToken cancellationToken)
+        public async Task<ChangeModelResponse> Handle(BuyRequest request, CancellationToken cancellationToken)
         {
             //TODO: Validate client exists
 
@@ -61,12 +63,12 @@ namespace TotvsChallenge.Core.Requests.CalculateChange
             return responseModel;
         }
 
-        private static bool PayBackWithCardError(CalculateChangeRequest request)
+        private static bool PayBackWithCardError(BuyRequest request)
         {
             return request.TotalAmount < request.ClientPaymentAmount && (request.PaymentType == 2 || request.PaymentType == 3);
         }
 
-        private static bool NeedPayback(CalculateChangeRequest request)
+        private static bool NeedPayback(BuyRequest request)
             => request.TotalAmount < request.ClientPaymentAmount
                 && request.PaymentType == 1;
 
@@ -107,39 +109,29 @@ namespace TotvsChallenge.Core.Requests.CalculateChange
 
         private static List<BillModelResponse> GetBills(ref decimal paybackAmount, Change change)
         {
-
-            var bills = new List<BillModelResponse>();
-
-            if (paybackAmount >= 100)
+            var billsModel = new List<BillModelResponse>();
+            var billsAvaiables = MoneyHelper.Bills;
+            foreach (var bill in billsAvaiables)
             {
-                var bill = new BillModelResponse(((int)paybackAmount / 100), "B100");
-                paybackAmount = paybackAmount - (bill.Quantity * 100);
-                change.B100 = bill.Quantity;
-                bills.Add(bill);
-            }
-            if (paybackAmount >= 50)
-            {
-                var bill = new BillModelResponse(((int)paybackAmount / 50), "B50");
-                paybackAmount = paybackAmount - (bill.Quantity * 50);
-                change.B50 = bill.Quantity;
-                bills.Add(bill);
-            }
-            if ((paybackAmount >= 20))
-            {
-                var bill = new BillModelResponse(((int)paybackAmount / 20), "B20");
-                paybackAmount = paybackAmount - (bill.Quantity * 20);
-                change.B20 = bill.Quantity;
-                bills.Add(bill);
-            }
-            if ((paybackAmount >= 10))
-            {
-                var bill = new BillModelResponse(((int)paybackAmount / 10), "B10");
-                paybackAmount = paybackAmount - (bill.Quantity * 10);
-                change.B10 = bill.Quantity;
-                bills.Add(bill);
+                if (paybackAmount >= bill.Value)
+                {
+                    var billModel = new BillModelResponse(((int)paybackAmount / bill.Value), bill.Key);
+                    paybackAmount = paybackAmount - (billModel.Quantity * bill.Value);
+                    SetValue(change, bill, billModel);
+                    billsModel.Add(billModel);
+                }
             }
 
-            return bills;
+            return billsModel;
+        }
+
+        private static void SetValue(Change change, KeyValuePair<string, int> item, BillModelResponse bill)
+        {
+            PropertyInfo prop = change.GetType().GetProperty(item.Key, BindingFlags.Public | BindingFlags.Instance);
+            if (null != prop && prop.CanWrite)
+            {
+                prop.SetValue(change, bill.Quantity, null);
+            }
         }
     }
 }

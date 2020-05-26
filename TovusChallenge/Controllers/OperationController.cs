@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TotvsChallenge.Core.Requests.CalculateChange;
+using TotvsChallenge.Core.Request.Operations;
 
 namespace TovusChallenge.Api.Controllers
 {
@@ -19,9 +19,8 @@ namespace TovusChallenge.Api.Controllers
             this.mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         }
 
-        // [Authorize(nameof(CalculateChangeRequest))]
         [HttpPost("buy")]
-        public async Task<ActionResult> Post([FromBody]CalculateChangeRequest request)
+        public async Task<ActionResult> Post([FromBody]BuyRequest request)
         {
             return Ok(await mediator.Send(request));
         }

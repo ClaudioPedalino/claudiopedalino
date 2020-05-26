@@ -11,19 +11,19 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-nanoserver-1903 AS build
 WORKDIR /src
 COPY ["TovusChallenge.Api.csproj", ""]
-COPY ["../TotvsChallenge.Core/TotvsChallenge.Core.csproj", "../TotvsChallenge.Core/"]
+COPY ["../TotvsChallenge.DataAccess.EF/TotvsChallenge.DataAccess.csproj", "../TotvsChallenge.DataAccess.EF/"]
 COPY ["../TotvsChallenge.Data/TotvsChallenge.Data.csproj", "../TotvsChallenge.Data/"]
 COPY ["../TotvsChallenge.Entities/TotvsChallenge.Entities.csproj", "../TotvsChallenge.Entities/"]
-COPY ["../TotvsChallenge.DataAccess.EF/TotvsChallenge.DataAccess.EF.csproj", "../TotvsChallenge.DataAccess.EF/"]
+COPY ["../TotvsChallenge.Core/TotvsChallenge.Core.csproj", "../TotvsChallenge.Core/"]
 RUN dotnet restore "./TovusChallenge.Api.csproj"
 COPY . .
 WORKDIR "/src/."
-RUN dotnet build "TovusChallenge.Api.csproj" -c Release -o /app/build
+RUN dotnet build "TovusChallenge.Api.csproj" -c Release -o /app
 
 FROM build AS publish
-RUN dotnet publish "TovusChallenge.Api.csproj" -c Release -o /app/publish
+RUN dotnet publish "TovusChallenge.Api.csproj" -c Release -o /app
 
 FROM base AS final
 WORKDIR /app
-COPY --from=publish /app/publish .
+COPY --from=publish /app .
 ENTRYPOINT ["dotnet", "TovusChallenge.Api.dll"]

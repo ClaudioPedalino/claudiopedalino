@@ -16,10 +16,10 @@ namespace TotvsChallenge.Core.Helpers
 
         public static readonly Dictionary<string, decimal> Coins = new Dictionary<string, decimal>
         {
-            ["C_R$050"] = (decimal)0.50,
-            ["C_R$010"] = (decimal)0.10,
-            ["C_R$005"] = (decimal)0.05,
-            ["C_R$001"] = (decimal)0.01,
+            ["C050"] = (decimal)0.50,
+            ["C010"] = (decimal)0.10,
+            ["C005"] = (decimal)0.05,
+            ["C001"] = (decimal)0.01,
         };
 
         public static readonly Dictionary<string, string> PaymentTypesDic = new Dictionary<string, string>

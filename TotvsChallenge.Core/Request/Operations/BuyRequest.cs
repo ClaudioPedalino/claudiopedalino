@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using TotvsChallenge.Data.Models;
 
-namespace TotvsChallenge.Core.Requests.CalculateChange
+namespace TotvsChallenge.Core.Request.Operations
 {
-    public class CalculateChangeRequest : IRequest<ChangeModelResponse>
+    public class BuyRequest : IRequest<ChangeModelResponse>
     {
         public IList<Product> Products { get; set; }
         public string ClientId { get; set; }

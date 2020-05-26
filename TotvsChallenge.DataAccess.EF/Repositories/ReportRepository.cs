@@ -61,7 +61,6 @@ namespace TotvsChallenge.DataAccess.Repositories
         //}
         #endregion
 
-        #region secondTry
         private readonly IBaseRepository baseRepository;
         public ReportRepository(IBaseRepository baseRepository)
         {
@@ -132,7 +131,6 @@ namespace TotvsChallenge.DataAccess.Repositories
                 return result;
             });
         }
-        #endregion
     }
 
 }

@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TotvsChallenge.Entities", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TotvsChallenge.DataAccess", "..\TotvsChallenge.DataAccess.EF\TotvsChallenge.DataAccess.csproj", "{AC4B1AA8-8AAB-45C7-BF7A-4E0BFA09B00E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TotvsChallenge.Tests", "..\TotvsChallenge.Tests\TotvsChallenge.Tests.csproj", "{26BA2A83-CA29-477F-9A0C-9DB95090D908}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{AC4B1AA8-8AAB-45C7-BF7A-4E0BFA09B00E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC4B1AA8-8AAB-45C7-BF7A-4E0BFA09B00E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC4B1AA8-8AAB-45C7-BF7A-4E0BFA09B00E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26BA2A83-CA29-477F-9A0C-9DB95090D908}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26BA2A83-CA29-477F-9A0C-9DB95090D908}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26BA2A83-CA29-477F-9A0C-9DB95090D908}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26BA2A83-CA29-477F-9A0C-9DB95090D908}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
