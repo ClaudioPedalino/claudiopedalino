@@ -1,0 +1,2 @@
+01.Update-database to run de initial migration with EFCore
+02.Launch redis service provided in folder

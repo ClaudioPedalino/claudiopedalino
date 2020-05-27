@@ -55,6 +55,7 @@ namespace TotvsChallengePoC.Core.Request.Buy
             return responseModel;
         }
 
+        //Main Challenge Logic
         private static void CalculateChangeToReturn(BuyRequest request, Change change, Operation operation, ChangeModelResponse responseModel)
         {
             decimal paybackAmount = request.ClientPaymentAmount - request.TotalAmount;
@@ -89,7 +90,7 @@ namespace TotvsChallengePoC.Core.Request.Buy
         private async Task ValidateClient(BuyRequest request)
         {
             Client client = await clientRepository.FindClientByIdAsync(request.ClientId);
-            if (client == null) throw new Exception("El cliente no existe en la base de datos");
+            if (client == null) throw new Exception($"El cliente no existe en la base de datos. Id : {request.ClientId}");
         }
 
         private static bool PayBackWithCardError(BuyRequest request)
@@ -136,7 +137,7 @@ namespace TotvsChallengePoC.Core.Request.Buy
         }
 
 
-        //NOTE: I couldnt make this two by generics, but almost use reflection
+        //NOTE: I couldnt make this two by generics, but at least use reflection
         private static void SetBillValue(Change change, KeyValuePair<string, int> item, BillModelResponse bill)
         {
             //https://stackoverflow.com/questions/619767/set-object-property-using-reflection

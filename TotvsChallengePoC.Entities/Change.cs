@@ -1,4 +1,6 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TotvsChallengePoC.Entities
 {
@@ -11,6 +13,10 @@ namespace TotvsChallengePoC.Entities
         }
 
         public Guid Id { get; set; }
+
+        [Required]
+        [MaxLength(20)]
+        [Column(TypeName = "DECIMAL(10,2)")]
         public decimal AmountToReturn { get; set; }
         public int? B100 { get; set; }
         public int? B50 { get; set; }

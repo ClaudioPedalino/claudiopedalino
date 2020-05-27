@@ -39,8 +39,8 @@ namespace TotvsChallengePoC.Core.Request.Reports.FindClientInfoById
             }
             catch (Exception ex)
             {
-                logService.Error(ex, $"Client failed querying database with parameters: {request.ClientId}" );
-                throw;
+                logService.Error(ex, $"Client failed querying database with parameters: {request.ClientId}");
+                return new ClientInfoModelResponse() { ClientFullName = $"El cliente con id: {request.ClientId} falló en su consulta a la base de datos" };
             }
         }
 

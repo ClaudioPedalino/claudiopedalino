@@ -77,7 +77,7 @@ namespace TotvsChallengePoC.Data.EF.Repository
         #endregion
 
 
-        public async Task<ClientInfoModelResponse> FindClientInfoById(string @ClientId)
+        public async Task<ClientInfoModelResponse> FindClientInfoById(string ClientId)
         {
             return await baseRepository.WithConnection(async q =>
             {

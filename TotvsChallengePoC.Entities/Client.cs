@@ -1,4 +1,6 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TotvsChallengePoC.Entities
 {
@@ -12,7 +14,15 @@ namespace TotvsChallengePoC.Entities
         }
 
         public Guid Id { get; set; }
+
+        [Required]
+        [MaxLength(40)]
+        [Column(TypeName = "varchar(40)")]
         public string FirstName { get; set; }
+
+        [Required]
+        [MaxLength(40)]
+        [Column(TypeName = "varchar(40)")]
         public string LastName { get; set; }
 
     }

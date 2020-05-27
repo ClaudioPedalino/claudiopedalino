@@ -26,7 +26,8 @@ namespace TotvsChallengePoC.Data.EF.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal>("AmountToReturn")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("DECIMAL(10,2)")
+                        .HasMaxLength(20);
 
                     b.Property<int?>("B10")
                         .HasColumnType("int");
@@ -64,10 +65,14 @@ namespace TotvsChallengePoC.Data.EF.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("FirstName")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("varchar(40)")
+                        .HasMaxLength(40);
 
                     b.Property<string>("LastName")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("varchar(40)")
+                        .HasMaxLength(40);
 
                     b.HasKey("Id");
 
@@ -87,7 +92,8 @@ namespace TotvsChallengePoC.Data.EF.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal>("ClientPaymentAmount")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("DECIMAL(10,2)")
+                        .HasMaxLength(20);
 
                     b.Property<DateTimeOffset>("DateCreated")
                         .HasColumnType("datetimeoffset");
@@ -96,7 +102,8 @@ namespace TotvsChallengePoC.Data.EF.Migrations
                         .HasColumnType("int");
 
                     b.Property<decimal>("TotalAmount")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("DECIMAL(10,2)")
+                        .HasMaxLength(20);
 
                     b.HasKey("Id");
 
@@ -117,7 +124,9 @@ namespace TotvsChallengePoC.Data.EF.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("varchar(40)")
+                        .HasMaxLength(40);
 
                     b.HasKey("Id");
 

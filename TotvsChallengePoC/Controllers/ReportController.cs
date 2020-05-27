@@ -14,7 +14,7 @@ namespace TotvsChallengePoC.Api.Controllers
     {
         private readonly IMediator mediator;
 
-        public ReportController(IMediator mediator/*, ILogger<ReportController> logger*/)
+        public ReportController(IMediator mediator)
         {
             this.mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         }

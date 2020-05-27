@@ -1,7 +1,10 @@
 ﻿using EasyCaching.Core;
+using Microsoft.Extensions.Configuration;
 using Moq;
 using NUnit.Framework;
+using Serilog;
 using System.Threading;
+using System.Threading.Tasks;
 using TotvsChallengePoC.Core.Request.Reports.FindClientInfoById;
 using TotvsChallengePoC.Data.Contracts;
 using TotvsChallengePoC.Tests.MockRepository;
@@ -15,6 +18,9 @@ namespace TotvsChallengePoC.Test
         FindClientInfoByIdRequest request;
         Mock<IReportRepository> reportRepository;
         Mock<IEasyCachingProviderFactory> easyCachingProviderFactory;
+        Mock<ILogger> logService;
+        Mock<IConfiguration> _config;
+
 
         [SetUp]
         public void Setup()
@@ -22,19 +28,21 @@ namespace TotvsChallengePoC.Test
             clientId = "3FA85F64-5717-4562-B3FC-2C963F66AFA1";
             cancellation = new CancellationToken();
             request = new FindClientInfoByIdRequest(clientId);
-            this.reportRepository = new ReportRepositoryMock().reportRepository;
-            this.easyCachingProviderFactory = new Mock<IEasyCachingProviderFactory>();
+            reportRepository = new ReportRepositoryMock().reportRepository;
+            easyCachingProviderFactory = new Mock<IEasyCachingProviderFactory>();
+            logService = new Mock<ILogger>();
+            _config = new Mock<IConfiguration>();
         }
 
-        //[Test]
-        //public async Task Test_something()
-        //{
-        //    //FindClientInfoByIdRequestHandler service = new FindClientInfoByIdRequestHandler(dapperRepository.Object, easyCachingProviderFactory.Object);
-        //    //var response = await service.Handle(request, cancellation);
+        [Test]
+        public async Task Test_something()
+        {
+            FindClientInfoByIdRequestHandler service = new FindClientInfoByIdRequestHandler(reportRepository.Object, easyCachingProviderFactory.Object, logService.Object, _config.Object);
+            var response = await service.Handle(request, cancellation);
 
-        //    //var result = await this.dapperRepository.Object.FindClientInfoById(clientId);
+            var result = await reportRepository.Object.FindClientInfoById(clientId);
 
-        //    //Assert.IsNotNull(result);
-        //}
+            Assert.IsNotNull(result);
+        }
     }
 }

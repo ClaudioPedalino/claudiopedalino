@@ -31,6 +31,11 @@ namespace TotvsChallengePoC
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            #region DockerImage => https://hub.docker.com/repository/registry-1.docker.io/17891789/totvschallengepocapi/tags?page=1
+
+            #endregion
+
+
             services.AddDbContext<DataContext>(options => options
                 .UseSqlServer(Configuration.GetConnectionString("Sql")));
 
@@ -38,23 +43,20 @@ namespace TotvsChallengePoC
                 .AddNewtonsoftJson()
                 .AddFluentValidation(opt => opt.RegisterValidatorsFromAssembly(Assembly.Load("TotvsChallengePoC.Core")));
             FluentValidation.ValidatorOptions.LanguageManager.Culture = new CultureInfo("es");
+            
+            AddContracts(services);
 
-            services.AddTransient<IOperationRepository, OperationRepository>();
-            services.AddTransient<IClientRepository, ClientRepository>();
-            services.AddScoped<IConnectionFactory, ConnectionFactory>();
-            services.AddScoped<IBaseRepository, BaseRepository>();
-            services.AddScoped<IReportRepository, ReportRepository>();
-
-            var assembly = AppDomain.CurrentDomain.Load("TotvsChallengePoC.Core");
-            services.AddMediatR(assembly);
+            services.AddMediatR(AppDomain.CurrentDomain.Load("TotvsChallengePoC.Core"));
 
             services.AddSingleton<Serilog.ILogger>(opt =>
             {
-                var connStr = Configuration["ConnectionStrings:Sql"];
-                var tableName = Configuration["ConnectionStrings:LogTable"];
                 return new LoggerConfiguration().WriteTo.
-                MSSqlServer(connStr, tableName, restrictedToMinimumLevel: Serilog.Events.LogEventLevel.Warning,
-                autoCreateSqlTable: true).CreateLogger();
+                MSSqlServer(Configuration["ConnectionStrings:Sql"],
+                            Configuration["ConnectionStrings:LogTable"],
+                            restrictedToMinimumLevel: Serilog.Events.
+                            LogEventLevel.Warning,
+                            autoCreateSqlTable: true)
+                .CreateLogger();
             });
 
 
@@ -78,6 +80,15 @@ namespace TotvsChallengePoC
             });
         }
 
+        private static void AddContracts(IServiceCollection services)
+        {
+            services.AddTransient<IOperationRepository, OperationRepository>();
+            services.AddTransient<IClientRepository, ClientRepository>();
+            services.AddScoped<IConnectionFactory, ConnectionFactory>();
+            services.AddScoped<IBaseRepository, BaseRepository>();
+            services.AddScoped<IReportRepository, ReportRepository>();
+        }
+
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
@@ -96,7 +107,7 @@ namespace TotvsChallengePoC
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Totvs Challenge Api");
             });
         }
     }
