@@ -13,10 +13,5 @@ namespace TotvsChallengePoC.Tests.MockRepository
         {
             clientRepository = new Mock<IClientRepository>();
         }
-
-        private void Setup()
-        {
-            //clientRepository.Setup(x => x.FindClientByIdAsync(It.IsAny<string>())).Returns(It.IsAny<Client>());
-        }
     }
 }

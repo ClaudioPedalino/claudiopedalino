@@ -21,13 +21,6 @@ namespace TotvsChallengePoC.Tests.MockRepository
             reportRepository.Setup(x => x.FindOperationInfoById(It.IsAny<string>())).ReturnsAsync(OperationStub.operation_01);
         }
 
-        //[Test]
-        //public Task Test_something()
-        //{
-        //    var response = ClientStub.client_01;
-
-
-        //    Assert.IsNotNull(response);
-        //}
+        
     }
 }

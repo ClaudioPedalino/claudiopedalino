@@ -4,7 +4,7 @@
 	# I had no internet for 4 days, but fortunatelly im on vacations, so i did this in 2 whole days
 	# I google a lot, and also see a lot of TimCorey's channels videos.. i recommend this a lot
 	# I never did all this things alone, i work in a factory and usually the architects lead some configurations, i learned so much doing this challenge, even in things i didnt get up, like Automapper, i can not doing this work :( But i refresh some concepts and get new things
-	# I do the whole application, and then i write some tests, i know isnt the right way but i have almost null experiencie with test and left from later..
+	# I do the whole application, and then i write only two tests, i know isnt the right way but i have almost null experiencie with test and left from later.. I failed badly this part of challenge, i need to practice more testing, i did it only once and were easier methods
 
 #I use:
 _Mediator => pattern with MediaR library to Handle cross api

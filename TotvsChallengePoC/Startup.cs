@@ -32,7 +32,6 @@ namespace TotvsChallengePoC
         public void ConfigureServices(IServiceCollection services)
         {
             #region DockerImage => https://hub.docker.com/repository/registry-1.docker.io/17891789/totvschallengepocapi/tags?page=1
-
             #endregion
 
 
@@ -42,8 +41,12 @@ namespace TotvsChallengePoC
             services.AddMvc()
                 .AddNewtonsoftJson()
                 .AddFluentValidation(opt => opt.RegisterValidatorsFromAssembly(Assembly.Load("TotvsChallengePoC.Core")));
+
+            //services.AddValidatorsFromAssembly(typeof(Startup).Assembly);
+            //services.AddValidatorsFromAssembly(Assembly.Load("TotvsChallengePoC.Core"));
+
             FluentValidation.ValidatorOptions.LanguageManager.Culture = new CultureInfo("es");
-            
+
             AddContracts(services);
 
             services.AddMediatR(AppDomain.CurrentDomain.Load("TotvsChallengePoC.Core"));
@@ -51,12 +54,12 @@ namespace TotvsChallengePoC
             services.AddSingleton<Serilog.ILogger>(opt =>
             {
                 return new LoggerConfiguration().WriteTo.
-                MSSqlServer(Configuration["ConnectionStrings:Sql"],
-                            Configuration["ConnectionStrings:LogTable"],
-                            restrictedToMinimumLevel: Serilog.Events.
-                            LogEventLevel.Warning,
-                            autoCreateSqlTable: true)
-                .CreateLogger();
+                    MSSqlServer(Configuration["ConnectionStrings:Sql"],
+                                Configuration["ConnectionStrings:LogTable"],
+                                restrictedToMinimumLevel: Serilog.Events.
+                                LogEventLevel.Warning,
+                                autoCreateSqlTable: true)
+                    .CreateLogger();
             });
 
 
